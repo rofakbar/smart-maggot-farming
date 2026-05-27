@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Maggot Farming Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🌿 Smart Maggot Farming</h1>
+            <p>Sekolah Alam Indonesia Cibinong</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Suhu Kandang</h3>
+                <div class="data-value">
+                    <span id="temp-val">--</span><span class="unit">°C</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Kelembaban</h3>
+                <div class="data-value">
+                    <span id="hum-val">--</span><span class="unit">%</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Status Kondisi</h3>
+                <div class="data-value">
+                    <span id="status-val" class="status-default">Menunggu Data...</span>
+                </div>
+                <p id="status-msg" class="status-message">Sistem sedang diinisialisasi.</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>📈 Grafik Kondisi Real-time</h3>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    </body>
+</html>
