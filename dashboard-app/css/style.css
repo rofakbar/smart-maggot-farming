@@ -33,7 +33,7 @@ header p {
     font-size: 14px;
 }
 
-/* Grid layout untuk responsivitas (nyesuaikan ukuran layar HP/Laptop) */
+/* Grid layout untuk responsivitas */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
