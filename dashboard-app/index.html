@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Maggot Farming Dashboard</title>
+    <title>Dashboard - Smart Maggot Farming</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <h1>🌿 Smart Maggot Farming</h1>
-            <p>Sekolah Alam Indonesia Cibinong</p>
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div>
+                <h1>🌿 Smart Maggot Farming</h1>
+                <p>Sekolah Alam Indonesia Cibinong</p>
+            </div>
+            <button id="btn-logout" class="btn-logout">Logout</button>
         </header>
 
         <div class="dashboard-grid">
@@ -31,6 +34,13 @@
             </div>
 
             <div class="card">
+                <h3>Kadar Gas Amonia</h3>
+                <div class="data-value">
+                    <span id="gas-val">--</span><span class="unit"> ppm</span>
+                </div>
+            </div>
+
+            <div class="card">
                 <h3>Status Kondisi</h3>
                 <div class="data-value">
                     <span id="status-val" class="status-default">Menunggu Data...</span>
@@ -45,5 +55,7 @@
         </div>
     </div>
 
-    </body>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+</body>
 </html>
