@@ -10,13 +10,18 @@
 <body>
 
     <div class="container">
-        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <header class="main-header">
             <div>
                 <h1>🌿 Smart Maggot Farming</h1>
                 <p>Sekolah Alam Indonesia Cibinong</p>
             </div>
             <button id="btn-logout" class="btn-logout">Logout</button>
         </header>
+
+        <section class="section-title">
+            <h2>Monitoring Sensor</h2>
+            <p>Data diperbarui otomatis dari ESP32 melalui MQTT dan backend Python.</p>
+        </section>
 
         <div class="dashboard-grid">
             <div class="card">
@@ -34,24 +39,41 @@
             </div>
 
             <div class="card">
-                <h3>Kadar Gas Amonia</h3>
+                <h3>Nilai Gas MQ-135</h3>
                 <div class="data-value">
-                    <span id="gas-val">--</span><span class="unit"> ppm</span>
+                    <span id="gas-val">--</span><span class="unit"> ADC</span>
                 </div>
             </div>
 
-            <div class="card">
-                <h3>Status Kondisi</h3>
-                <div class="data-value">
-                    <span id="status-val" class="status-default">Menunggu Data...</span>
+            <div class="card status-card">
+                <h3>Kondisi DHT22</h3>
+                <div class="data-value status-value">
+                    <span id="status-dht-val" class="status-default">Menunggu Data</span>
                 </div>
-                <p id="status-msg" class="status-message">Sistem sedang diinisialisasi.</p>
+                <p id="status-dht-msg" class="status-message">Membaca suhu dan kelembaban kandang.</p>
+            </div>
+
+            <div class="card status-card">
+                <h3>Kondisi MQ-135</h3>
+                <div class="data-value status-value">
+                    <span id="status-gas-val" class="status-default">Menunggu Data</span>
+                </div>
+                <p id="status-gas-msg" class="status-message">Membaca kondisi gas kandang.</p>
             </div>
         </div>
 
-        <div class="chart-container">
-            <h3>📈 Grafik Kondisi Real-time</h3>
-            <canvas id="myChart"></canvas>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>📈 Grafik DHT22 Real-time</h3>
+                <p class="chart-caption">Menampilkan suhu dan kelembaban kandang.</p>
+                <canvas id="dhtChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>📈 Grafik MQ-135 Real-time</h3>
+                <p class="chart-caption">Menampilkan nilai gas MQ-135 dalam ADC.</p>
+                <canvas id="gasChart"></canvas>
+            </div>
         </div>
     </div>
 

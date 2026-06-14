@@ -12,13 +12,11 @@ body {
     padding: 20px;
 }
 
-/* Biar padding body gak ngerusak layout centering pas di halaman login */
 .login-page {
     padding: 0;
     margin: 0;
     background-color: #f4f7f6;
 }
-
 
 /* ==================== STYLE HALAMAN LOGIN ==================== */
 .login-container {
@@ -84,8 +82,8 @@ body {
     margin-top: 10px;
 }
 
-.btn-login:hover { 
-    background-color: #1b5e20; 
+.btn-login:hover {
+    background-color: #1b5e20;
 }
 
 .error-msg {
@@ -94,11 +92,18 @@ body {
     margin-top: 10px;
 }
 
-
 /* ==================== STYLE HALAMAN DASHBOARD ==================== */
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 12px;
 }
 
 header h1 {
@@ -111,11 +116,26 @@ header p {
     font-size: 14px;
 }
 
+.section-title {
+    margin-bottom: 16px;
+}
+
+.section-title h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.section-title p {
+    color: #666;
+    font-size: 13px;
+}
+
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
 }
 
 .card {
@@ -124,10 +144,11 @@ header p {
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     text-align: center;
+    min-height: 135px;
 }
 
 .card h3 {
-    font-size: 16px;
+    font-size: 15px;
     color: #555;
     margin-bottom: 10px;
 }
@@ -140,17 +161,49 @@ header p {
 }
 
 .unit {
-    font-size: 18px;
+    font-size: 17px;
     color: #888;
 }
 
-.status-default { color: #666; font-size: 20px;}
-.status-optimal { color: #2e7d32; font-size: 22px; }
-.status-warning { color: #d32f2f; font-size: 22px; }
+.status-card .data-value {
+    margin-bottom: 8px;
+}
+
+.status-value {
+    font-size: 21px;
+    line-height: 1.25;
+}
+
+.status-default {
+    color: #666;
+}
+
+.status-optimal {
+    color: #2e7d32;
+}
+
+.status-normal {
+    color: #2e7d32;
+}
+
+.status-monitor {
+    color: #f57c00;
+}
+
+.status-warning {
+    color: #d32f2f;
+}
 
 .status-message {
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.35;
     color: #777;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
 }
 
 .chart-container {
@@ -162,8 +215,15 @@ header p {
 
 .chart-container h3 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     color: #555;
+}
+
+.chart-caption {
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 12px;
 }
 
 canvas {
@@ -181,6 +241,25 @@ canvas {
     font-weight: bold;
 }
 
-.btn-logout:hover { 
-    background-color: #b71c1c; 
+.btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .main-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-logout {
+        align-self: flex-end;
+    }
+
+    .data-value {
+        font-size: 28px;
+    }
 }
