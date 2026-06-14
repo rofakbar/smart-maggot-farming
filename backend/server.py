@@ -20,6 +20,7 @@ latest_data = {
     'statusGas': 'Menunggu Data'
 }
 history = []
+produksi_data = []
 lock = threading.Lock()
 
 
@@ -86,7 +87,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.send_header('Content-Length', str(len(encoded)))
         self.end_headers()
@@ -100,18 +101,35 @@ class Handler(BaseHTTPRequestHandler):
         with lock:
             latest = dict(latest_data)
             recent = list(history)
+            produksi = list(produksi_data)
 
         if path == '/sensor-terbaru':
             self._send_json(latest)
         elif path == '/riwayat':
             self._send_json(recent)
+        elif path == '/data-produksi':
+            self._send_json(produksi)
         elif path == '/health':
             self._send_json({'ok': True, 'mqtt_host': MQTT_HOST, 'mqtt_port': MQTT_PORT, 'topic': MQTT_TOPIC})
         else:
             self._send_json({'error': 'Endpoint tidak ditemukan'}, status=404)
+            
+    
+    def do_POST(self):
+        path = urlparse(self.path).path
+        if path == '/input-produksi':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data)
+            
+            with lock:
+                produksi_data.append(data)
+                
+            self._send_json({'message': 'Data produksi berhasil disimpan!', 'data': data})
+        else:
+            self._send_json({'error': 'Endpoint tidak ditemukan'}, status=404)
 
     def log_message(self, format, *args):
-        # Kurangi log bawaan HTTP agar terminal mudah dibaca.
         return
 
 
